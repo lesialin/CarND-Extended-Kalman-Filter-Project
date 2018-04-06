@@ -10,7 +10,7 @@ using std::vector;
 
 //#define ONLYRASER
 //#define ONLYLASER
-//avoid to "only " test x both laser and lidar 
+//avoid to "only " test x both laser and lidar
 #ifdef ONLYLASER
 #undef ONLYRASER
 #endif
@@ -173,7 +173,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
      * Update the state and covariance matrices.
    */
 #ifdef ONLYLASER
-  cout << "only processes lidar sensor"<<endl;
+  cout << "only processes lidar sensor" << endl;
   if (measurement_pack.sensor_type_ == MeasurementPackage::LASER) {
     // Laser updates
     ekf_.H_ = H_laser_;
@@ -184,7 +184,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
 #endif
 
 #ifdef ONLYRASER
-  cout << "only processes raser sensor"<<endl;
+  cout << "only processes raser sensor" << endl;
   if (measurement_pack.sensor_type_ == MeasurementPackage::RADAR) {
     // Radar updates
     Hj_ = tools.CalculateJacobian(ekf_.x_);

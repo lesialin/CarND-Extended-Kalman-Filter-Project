@@ -53,7 +53,7 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   float vy = x_(3);
   float pred_rho = sqrt(px * px + py * py);
   float pred_phi = atan2(py, px);
-  float pred_rho_dot = (px * vx + py * vy) / pred_rho;  
+  float pred_rho_dot = (px * vx + py * vy) / pred_rho;
   VectorXd pred_z(3);
   pred_z <<  pred_rho, pred_phi, pred_rho_dot;
   //update
@@ -70,7 +70,7 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
       y(1) += M_PI;
     }
   }
-  
+
   //new state
   x_ = x_ + (K * y);
   MatrixXd I =  MatrixXd::Identity(x_.size(), x_.size());
